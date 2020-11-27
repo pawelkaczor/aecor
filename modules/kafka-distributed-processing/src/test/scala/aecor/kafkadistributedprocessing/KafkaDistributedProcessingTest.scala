@@ -73,7 +73,7 @@ class KafkaDistributedProcessingTest extends AnyFunSuiteLike with KafkaSupport w
         )
 
       def dequeue(size: Long): IO[List[Int]] =
-        queue.dequeue.take(size).compile.to[List]
+        queue.dequeue.take(size).compile.toList
 
       for {
         d1 <- run(1).start
